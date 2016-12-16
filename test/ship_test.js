@@ -4,35 +4,12 @@ var expect = require('chai').expect;
 //test suite 1 
 describe('checkForShip', function() {
 
-	//call necessary file
+	//declare necessary global variables
 	var checkForShip = require('../game_logic/ship_methods').checkForShip;
+	var player;
 
-	it('should correctly report no ship at a given players coordinates', function() {
-		player = {
-			ships: [
-				{
-					locations: [[0,0]]
-				}
-			]
-		};
-		//expected to be false
-		expect(checkForShip(player, [0,0])).to.deep.equal(player.ships[0]);
-	});
+	before(function() {
 
-	it('should correctly report when a ship is at a given players coordinates', function() {
-		player = {
-			ships: [
-				{
-					locations: [[0,0]]
-				}
-			]
-		};
-
-		//expected to be false
-		expect(checkForShip(player, [0,0])).to.deep.equal(player.ships[0]);
-	});
-
-	it('should handle checking multiple ships located at more than one coordinate', function() {
 		player = {
 			ships: 
 			[
@@ -43,7 +20,8 @@ describe('checkForShip', function() {
 						[0,1],
 						[0,2],
 						[0,3],						
-					]
+					],
+					damage: []
 				},
 				{
 					locations: 
@@ -52,7 +30,8 @@ describe('checkForShip', function() {
 						[2,3],
 						[2,4],
 						[2,5],						
-					]
+					],
+					damage: []
 				},
 				{
 					locations: 
@@ -61,10 +40,25 @@ describe('checkForShip', function() {
 						[4,1],
 						[4,2],
 						[4,3],						
-					]
+					],
+					damage: []					
 				}
 			]
 		};
+
+	});
+
+	it('should correctly report no ship at a given players coordinates', function() {
+
+		expect(checkForShip(player, [0,0])).to.deep.equal(player.ships[0]);
+	});
+
+	it('should correctly report when a ship is at a given players coordinates', function() {
+
+		expect(checkForShip(player, [0,0])).to.deep.equal(player.ships[0]);
+	});
+
+	it('should handle checking multiple ships located at more than one coordinate', function() {
 
 		//ship 1
 		expect(checkForShip(player, [0,0])).to.deep.equal(player.ships[0]);
@@ -102,10 +96,11 @@ describe('damageShip', function() {
 describe('fireOnShip', function() {
 	
 	var fireOnShip = require('../game_logic/ship_methods').fireOnShip;
+	var player;
 
-	it('should record damage on a given ship at a given location that I know is occupied', function() {
-
-		var player = {
+	beforeEach(function () {
+		
+		player = {
 			ships: [
 				{
 					locations: [[0,0]],
@@ -113,6 +108,18 @@ describe('fireOnShip', function() {
 				}
 			]
 		};
+
+	});
+
+	after(function() {
+		console.log('Entire test suite completed.');
+	});
+
+	afterEach(function() {
+		console.log('Single unit test completed.');
+	});
+
+	it('should record damage on a given ship at a given location that I know is occupied', function() {
 
 		fireOnShip(player, [0,0]);
 
