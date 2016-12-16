@@ -1,16 +1,24 @@
 {
-  "name": "unit-testing",
+  "name": "unit_testing",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a prototype unit testing project created to learn how to use Mocha and Chai.",
   "main": "main_test.js",
-  "directories": {
-    "test": "test"
+  "dependencies": {
+    "chai": "^3.5.0"
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/thomasemmerson/unit_testing"
+  },
+  "keywords": [
+    "unit_testing"
+  ],
+  "author": "Tom Emmerson",
   "license": "ISC"
 }
