@@ -111,14 +111,6 @@ describe('fireOnShip', function() {
 
 	});
 
-	after(function() {
-		console.log('Entire test suite completed.');
-	});
-
-	afterEach(function() {
-		console.log('Single unit test completed.');
-	});
-
 	it('should record damage on a given ship at a given location that I know is occupied', function() {
 
 		fireOnShip(player, [0,0]);
