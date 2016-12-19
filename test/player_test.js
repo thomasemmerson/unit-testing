@@ -96,5 +96,16 @@ describe('PLAYER METHODS', function () {
       expect(actual).to.have.length(1);
       expect(actual[0]).to.deep.equal([0, 1]);
     });
+
+    it('should throw an error if no direction is specified', function () {
+      //code should go here
+      var ship = player.ships[0];
+      var coordinates = [0,1];
+        var handler = function () { 
+            placeShip(player, ship, coordinates);
+        };
+      expect(handler).to.throw(Error);
+      expect(handler).to.throw('You left out the direction!');
   });
 });
+}); 
